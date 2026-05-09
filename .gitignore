@@ -219,6 +219,3 @@ __marimo__/
 
 /.quarto/
 **/*.quarto_ipynb
-/.quarto/
-/_site/
-/docs/
