@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2020-09-27">
+<meta name="description" content="Traversing Reddit comment trees">
 
-<title>breadthdepthcommenttraversal – pyground</title>
+<title>Breadth/depth-first traversal – Pyground 🐍</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -293,7 +295,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">pyground</span>
+    <span class="navbar-title">Pyground 🐍</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -304,7 +306,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="../index.html"> 
-<span class="menu-text">Home</span></a>
+<span class="menu-text">Notebooks</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../about.html"> 
@@ -319,7 +321,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
@@ -327,26 +329,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#reddit-comment-traversal" id="toc-reddit-comment-traversal" class="nav-link active" data-scroll-target="#reddit-comment-traversal">Reddit comment traversal</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link active" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content column-page-left" id="quarto-document-content">
 
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Breadth/depth-first traversal</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">cs</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Traversing Reddit comment trees
+  </div>
+</div>
 
 
+<div class="quarto-title-meta column-page-left">
 
-<p><a href="https://colab.research.google.com/github/jben-hun/pyground/blob/master/notebooks/breadthDepthCommentTraversal.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
-<section id="reddit-comment-traversal" class="level1">
-<h1>Reddit comment traversal</h1>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 27, 2020</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="https://colab.research.google.com/github/jben-hun/pyground/blob/main/notebooks/breadthDepthCommentTraversal.ipynb" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
 <p>Implementing breadth- and depth-first traversal and using them to fetch all comments from a reddit comment forest</p>
-<p>PRAW is used to interact with the reddit api, a reddit account and a registered app is required for usage, to get started: * <a href="https://praw.readthedocs.io/en/latest/getting_started/quick_start.html" class="uri">https://praw.readthedocs.io/en/latest/getting_started/quick_start.html</a></p>
-<div id="cell-3" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:54}}" data-outputid="3abc6c2c-f5dc-487a-8aa8-0ffd1fd227b3">
-<details class="code-fold">
-<summary>Code</summary>
+<p>PRAW is used to interact with the reddit api, a reddit account and a registered app is required for usage, to get started: - <a href="https://praw.readthedocs.io/en/latest/getting_started/quick_start.html" class="uri">https://praw.readthedocs.io/en/latest/getting_started/quick_start.html</a></p>
+<div id="cell-4" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;python&quot;}}" data-outputid="3abc6c2c-f5dc-487a-8aa8-0ffd1fd227b3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install <span class="op">-</span>q praw</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> praw</span>
@@ -360,15 +387,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    client_id<span class="op">=</span>client_id,</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    client_secret<span class="op">=</span>client_secret,</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    user_agent<span class="op">=</span>user_agent)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     |████████████████████████████████| 153kB 2.6MB/s 
      |████████████████████████████████| 204kB 11.5MB/s </code></pre>
 </div>
 </div>
-<div id="cell-4" class="cell">
-<details class="code-fold">
-<summary>Code</summary>
+<div id="cell-5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;python&quot;}}">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> traverse_comments(comments, <span class="op">*</span>, breadth_first<span class="op">=</span><span class="va">False</span>):</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    queue <span class="op">=</span> deque(comments[:])</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> []</span>
@@ -386,70 +410,53 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>                queue.extend(e.replies)</span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>            result.append(e.body)</span>
 <span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 </div>
 <p><strong>Supply a subreddit url</strong></p>
 <p>Preferably an archived one, so the comments will not change during operation</p>
-<div id="cell-6" class="cell">
-<details class="code-fold">
-<summary>Code</summary>
+<div id="cell-7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;python&quot;}}">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>submission_url <span class="op">=</span> <span class="st">"https://www.reddit.com/r/aww/comments/fo6q11/his_favorite_place_is_his_bed/"</span> <span class="co">#@param {type:"string"}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 </div>
 <p><strong>Our depth-first traversal</strong></p>
-<div id="cell-8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:54}}" data-outputid="d07ed99d-fca5-453e-9b4f-3d4a9e768a12">
-<details class="code-fold">
-<summary>Code</summary>
+<div id="cell-9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;python&quot;}}" data-outputid="d07ed99d-fca5-453e-9b4f-3d4a9e768a12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>time</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>comments_depthfirst <span class="op">=</span> <span class="bu">set</span>(traverse_comments(</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    reddit.submission(url<span class="op">=</span>submission_url).comments))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>CPU times: user 610 ms, sys: 21.1 ms, total: 631 ms
 Wall time: 1min 10s</code></pre>
 </div>
 </div>
 <p><strong>Our breadth-first traversal</strong></p>
-<div id="cell-10" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:54}}" data-outputid="f1bef1d5-0b0e-4661-ed14-03ac1809a84e">
-<details class="code-fold">
-<summary>Code</summary>
+<div id="cell-11" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;python&quot;}}" data-outputid="f1bef1d5-0b0e-4661-ed14-03ac1809a84e">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>time</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>comments_breadthfirst <span class="op">=</span> <span class="bu">set</span>(traverse_comments(</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    reddit.submission(url<span class="op">=</span>submission_url).comments, breadth_first<span class="op">=</span><span class="va">True</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>CPU times: user 588 ms, sys: 26.4 ms, total: 614 ms
 Wall time: 1min 1s</code></pre>
 </div>
 </div>
 <p><strong>Built-in breadth-first traversal</strong></p>
-<div id="cell-12" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:54}}" data-outputid="6fee97dc-595a-40b6-d183-b838e93735b6">
-<details class="code-fold">
-<summary>Code</summary>
+<div id="cell-13" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;python&quot;}}" data-outputid="6fee97dc-595a-40b6-d183-b838e93735b6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>time</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>submission <span class="op">=</span> reddit.submission(url<span class="op">=</span>submission_url)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>submission.comments.replace_more(limit<span class="op">=</span><span class="va">None</span>)</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>comments_builtin <span class="op">=</span> <span class="bu">set</span>([comment.body <span class="cf">for</span> comment <span class="kw">in</span> submission.comments.<span class="bu">list</span>()])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>CPU times: user 666 ms, sys: 22.9 ms, total: 688 ms
 Wall time: 1min 7s</code></pre>
 </div>
 </div>
 <p><strong>Result validation</strong></p>
-<div id="cell-14" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:35}}" data-outputid="7816d97d-f9e2-466f-f37a-64f5eb8d744d">
-<details class="code-fold">
-<summary>Code</summary>
+<div id="cell-15" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;python&quot;}}" data-outputid="7816d97d-f9e2-466f-f37a-64f5eb8d744d">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Results are equivalent:"</span>,</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>      comments_depthfirst <span class="op">==</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>      comments_breadthfirst <span class="op">==</span></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>      comments_builtin)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Results are equivalent: True</code></pre>
 </div>
 </div>
-</section>
 <section id="references" class="level1">
 <h1>References</h1>
 <ul>
@@ -876,6 +883,19 @@ Wall time: 1min 7s</code></pre>
   });
   </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p><a href="https://github.com/jben-hun"><i class="bi bi-github"></i> <b>JBen</b></a></p>
+</div>
+    <div class="nav-footer-right">
+<p><a href="https://quarto.org/docs/websites">Made with Quarto</a></p>
+</div>
+  </div>
+</footer>
 
 
 

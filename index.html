@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Pyground 🐍 – pyground</title>
+<title>Notebooks – Pyground 🐍</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -86,9 +86,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-date','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -318,7 +318,7 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">pyground</span>
+    <span class="navbar-title">Pyground 🐍</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -329,7 +329,7 @@ window.Quarto = {
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link active" href="./index.html" aria-current="page"> 
-<span class="menu-text">Home</span></a>
+<span class="menu-text">Notebooks</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./about.html"> 
@@ -344,30 +344,24 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#notebook-projects" id="toc-notebook-projects" class="nav-link active" data-scroll-target="#notebook-projects">Notebook projects</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Pyground 🐍</h1>
+<h1 class="title">Notebooks</h1>
 </div>
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page">
 
     
   
@@ -379,158 +373,233 @@ window.Quarto = {
 </header>
 
 
-<section id="notebook-projects" class="level1">
-<h1>Notebook projects</h1>
-<p>Made with Quarto: <a href="https://quarto.org/docs/websites" class="uri">https://quarto.org/docs/websites</a>.</p>
+<p>APIs, Computer Science, Data science, Machine Learning, Statistics, Visualization</p>
 
 
 
-</section>
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1778321054214" data-listing-reading-time-sort="1" data-listing-word-count-sort="79">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./notebooks/breadthDepthCommentTraversal.html" class="no-external">Reddit comment traversal</a>
-</h3>
-<div class="delink listing-description"><a href="./notebooks/breadthDepthCommentTraversal.html" class="no-external">
-Implementing breadth- and depth-first traversal and using them to fetch all comments from a reddit comment forest
-</a></div>
+<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-categories="bWw=" data-listing-date-sort="1622930400000" data-listing-file-modified-sort="1778327244653" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="632">
+<a href="./notebooks/neuralNetBackprop.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Neural network backpropagation
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('bWw='); return false;">ml</div>
+
 </div>
-<div class="metadata">
-<a href="./notebooks/breadthDepthCommentTraversal.html" class="no-external">
-</a>
+<div class="card-text listing-description delink">
+<p>Mini-batched multilayer perceptron stochastic gradient descent</p>
 </div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-file-modified-sort="1778321054214" data-listing-reading-time-sort="1" data-listing-word-count-sort="100">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./notebooks/gravitySort.html" class="no-external"></a>
-</h3>
-<div class="delink listing-description"><a href="./notebooks/gravitySort.html" class="no-external">
-<strong>Gravity Sort</strong>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./notebooks/gravitySort.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-listing-file-modified-sort="1778321054215" data-listing-reading-time-sort="4" data-listing-word-count-sort="649">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./notebooks/hypothesisTesting.html" class="no-external">Hypothesis Testing</a>
-</h3>
-<div class="delink listing-description"><a href="./notebooks/hypothesisTesting.html" class="no-external">
-Here we’ll explore simple hypothesis testing in python. In hypothesis testing, we have data samples, and we want to test various assumptions about their distributions. Our…
-</a></div>
-</div>
-<div class="metadata">
-<a href="./notebooks/hypothesisTesting.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-listing-file-modified-sort="1778321054220" data-listing-reading-time-sort="1" data-listing-word-count-sort="21">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./notebooks/imageTiler.html" class="no-external">Definitions</a>
-</h3>
-<div class="delink listing-description"><a href="./notebooks/imageTiler.html" class="no-external">
-<strong>Choose an option to provide a source image</strong>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./notebooks/imageTiler.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-listing-file-modified-sort="1778321054220" data-listing-reading-time-sort="1" data-listing-word-count-sort="133">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./notebooks/markovSentences.html" class="no-external">Text generation with nth order Markov chain models trained on reddit data</a>
-</h3>
-<div class="delink listing-description"><a href="./notebooks/markovSentences.html" class="no-external">
-The probability <span class="math inline">\(P(\ word_{m}\ \mid\ word_{m-1}\ \land\ word_{m-2}\ \land\ \cdots\ \land\ word_{m-n}\ )\)</span>, where <span class="math inline">\(n\)</span> is the order of the model, is proportional to the…
-</a></div>
-</div>
-<div class="metadata">
-<a href="./notebooks/markovSentences.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-listing-file-modified-sort="1778321054220" data-listing-reading-time-sort="4" data-listing-word-count-sort="644">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./notebooks/neuralNetBackprop.html" class="no-external">Neural Network Backpropagation</a>
-</h3>
-<div class="delink listing-description"><a href="./notebooks/neuralNetBackprop.html" class="no-external">
-This is a simple implementation of the multilayer perceptron algorithm in python3 and numpy.
-</a></div>
-</div>
-<div class="metadata">
-<a href="./notebooks/neuralNetBackprop.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-listing-file-modified-sort="1778321054221" data-listing-reading-time-sort="1" data-listing-word-count-sort="69">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./notebooks/steamServerStat.html" class="no-external">Steam server statistics</a>
-</h3>
-<div class="delink listing-description"><a href="./notebooks/steamServerStat.html" class="no-external">
-This notebook uses the Master Server Query Protocol and server queries to get a server list and statistics of multiplayer Source and Goldsource engine mods. * This is for…
-</a></div>
-</div>
-<div class="metadata">
-<a href="./notebooks/steamServerStat.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="7" data-listing-file-modified-sort="1778321054221" data-listing-reading-time-sort="1" data-listing-word-count-sort="25">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./notebooks/viterbi.html" class="no-external"></a>
-</h3>
-<div class="delink listing-description"><a href="./notebooks/viterbi.html" class="no-external">
-<strong>Construct a hidden Markov model</strong>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./notebooks/viterbi.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="8" data-listing-file-modified-sort="1778321054221" data-listing-reading-time-sort="1" data-listing-word-count-sort="125">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./notebooks/youtubeAPI.html" class="no-external"></a>
-</h3>
-<div class="delink listing-description"><a href="./notebooks/youtubeAPI.html" class="no-external">
-<strong>Calculate the total duration of a youtube playlist by getting all video ids it contains, and accumulating their durations</strong>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./notebooks/youtubeAPI.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="9" data-listing-date-sort="1778277600000" data-listing-file-modified-sort="1778321390863" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./notebooks/viterby.html" class="no-external">Cool experiment</a>
-</h3>
-<div class="delink listing-description"><a href="./notebooks/viterby.html" class="no-external">
-<p>Testing feature matching.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./notebooks/viterby.html" class="no-external">
+<div class="card-attribution card-text-small end">
 <div class="listing-date">
-May 9, 2026
+Jun 6, 2021
 </div>
-</a>
 </div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="1" data-categories="c3RhdHMlMkNhcGk=" data-listing-date-sort="1619301600000" data-listing-file-modified-sort="1778327181556" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="63">
+<a href="./notebooks/steamServerStat.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Steam server statistics
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('c3RhdHM='); return false;">stats</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('YXBp'); return false;">api</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>Source &amp; Goldsource mod servers</p>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Apr 25, 2021
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="2" data-categories="ZHMlMkNzdGF0cyUyQ3Zpc3VhbA==" data-listing-date-sort="1611529200000" data-listing-file-modified-sort="1778327317285" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="585">
+<a href="./notebooks/hypothesisTesting.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Hypothesis testing
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZHM='); return false;">ds</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('c3RhdHM='); return false;">stats</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dmlzdWFs'); return false;">visual</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>Simple hypothesis testing in Python</p>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Jan 25, 2021
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="3" data-categories="Y3MlMkN2aXN1YWw=" data-listing-date-sort="1603926000000" data-listing-file-modified-sort="1778327339719" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="93">
+<a href="./notebooks/gravitySort.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Gravity sort
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y3M='); return false;">cs</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dmlzdWFs'); return false;">visual</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>A.k.a. Bead sort</p>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Oct 29, 2020
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="4" data-categories="Y3M=" data-listing-date-sort="1601157600000" data-listing-file-modified-sort="1778327355296" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="70">
+<a href="./notebooks/breadthDepthCommentTraversal.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Breadth/depth-first traversal
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y3M='); return false;">cs</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>Traversing Reddit comment trees</p>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Sep 27, 2020
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="5" data-categories="Y3MlMkNkcw==" data-listing-date-sort="1600984800000" data-listing-file-modified-sort="1778327264012" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="125">
+<a href="./notebooks/markovSentences.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Markov sentences
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y3M='); return false;">cs</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZHM='); return false;">ds</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>Generate reddit comments with a markov chain</p>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Sep 25, 2020
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="6" data-categories="dmlzdWFs" data-listing-date-sort="1590357600000" data-listing-file-modified-sort="1778327094708" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="21">
+<a href="./notebooks/imageTiler.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Image tiler
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('dmlzdWFs'); return false;">visual</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>Tile an image with mirroring</p>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+May 25, 2020
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="7" data-categories="Y3MlMkNkcyUyQ3Zpc3VhbA==" data-listing-date-sort="1589493600000" data-listing-file-modified-sort="1778327200329" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="17">
+<a href="./notebooks/viterbi.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Viterbi algorithm
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y3M='); return false;">cs</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZHM='); return false;">ds</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dmlzdWFs'); return false;">visual</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>Finding the Viterbi path</p>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+May 15, 2020
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="8" data-categories="YXBp" data-listing-date-sort="1588802400000" data-listing-file-modified-sort="1778327367567" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="121">
+<a href="./notebooks/youtubeAPI.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+YouTube API
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('YXBp'); return false;">api</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>Playlist duration calculation with the YouTube API</p>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+May 7, 2020
+</div>
+</div>
+</div>
+</div></a>
 </div>
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
@@ -949,6 +1018,19 @@ May 9, 2026
   });
   </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p><a href="https://github.com/jben-hun"><i class="bi bi-github"></i> <b>JBen</b></a></p>
+</div>
+    <div class="nav-footer-right">
+<p><a href="https://quarto.org/docs/websites">Made with Quarto</a></p>
+</div>
+  </div>
+</footer>
 
 
 

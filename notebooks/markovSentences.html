@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2020-09-25">
+<meta name="description" content="Generate reddit comments with a markov chain">
 
-<title>markovsentences – pyground</title>
+<title>Markov sentences – Pyground 🐍</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -325,7 +327,7 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">pyground</span>
+    <span class="navbar-title">Pyground 🐍</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -336,7 +338,7 @@ window.Quarto = {
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="../index.html"> 
-<span class="menu-text">Home</span></a>
+<span class="menu-text">Notebooks</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../about.html"> 
@@ -351,7 +353,7 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
@@ -367,13 +369,44 @@ window.Quarto = {
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content column-page-left" id="quarto-document-content">
 
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Markov sentences</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">cs</div>
+    <div class="quarto-category">ds</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Generate reddit comments with a markov chain
+  </div>
+</div>
 
 
+<div class="quarto-title-meta column-page-left">
 
-<p><a href="https://colab.research.google.com/github/jben-hun/pyground/blob/master/notebooks/markovSentences.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 25, 2020</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="https://colab.research.google.com/github/jben-hun/pyground/blob/main/notebooks/markovSentences.ipynb" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
 <section id="text-generation-with-nth-order-markov-chain-models-trained-on-reddit-data" class="level1">
 <h1>Text generation with nth order Markov chain models trained on reddit data</h1>
 <p>The probability <span class="math inline">\(P(\ word_{m}\ \mid\ word_{m-1}\ \land\ word_{m-2}\ \land\ \cdots\ \land\ word_{m-n}\ )\)</span>, where <span class="math inline">\(n\)</span> is the order of the model, is proportional to the relative occurrences of such sequence of words in the training dataset.</p>
@@ -382,10 +415,8 @@ window.Quarto = {
 </section>
 <section id="implementation" class="level1">
 <h1>Implementation</h1>
-<p>PRAW is used to interact with the reddit api, a reddit account and a registered app is required for usage, to get started: * <a href="https://praw.readthedocs.io/en/latest/getting_started/quick_start.html" class="uri">https://praw.readthedocs.io/en/latest/getting_started/quick_start.html</a></p>
-<div id="cell-4" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:54}}" data-outputid="1901ea6b-5ac4-4722-f691-582ddff05886">
-<details class="code-fold">
-<summary>Code</summary>
+<p>PRAW is used to interact with the reddit api, a reddit account and a registered app is required for usage, to get started: - <a href="https://praw.readthedocs.io/en/latest/getting_started/quick_start.html" class="uri">https://praw.readthedocs.io/en/latest/getting_started/quick_start.html</a></p>
+<div id="cell-5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;python&quot;}}" data-outputid="1901ea6b-5ac4-4722-f691-582ddff05886">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install <span class="op">-</span>q praw</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> praw</span>
@@ -407,15 +438,12 @@ window.Quarto = {
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    client_id<span class="op">=</span>client_id,</span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    client_secret<span class="op">=</span>client_secret,</span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    user_agent<span class="op">=</span>user_agent)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     |████████████████████████████████| 153kB 2.7MB/s 
      |████████████████████████████████| 204kB 5.9MB/s </code></pre>
 </div>
 </div>
-<div id="cell-5" class="cell">
-<details class="code-fold">
-<summary>Code</summary>
+<div id="cell-6" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;python&quot;}}">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>SUBREDDITS <span class="op">=</span> (<span class="st">"askreddit"</span>, <span class="st">"explainlikeimfive"</span>, <span class="st">"dankmemes"</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -641,18 +669,14 @@ window.Quarto = {
 <span id="cb3-223"><a href="#cb3-223" aria-hidden="true" tabindex="-1"></a>    <span class="at">@property</span></span>
 <span id="cb3-224"><a href="#cb3-224" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_sentences(<span class="va">self</span>):</span>
 <span id="cb3-225"><a href="#cb3-225" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.sentences[<span class="bu">int</span>(<span class="bu">len</span>(<span class="va">self</span>.sentences)<span class="op">*</span><span class="va">self</span>.train_split):]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 </div>
 </section>
 <section id="demo" class="level1">
 <h1>Demo</h1>
 <p><strong>Construct markov chains for each specified subreddit</strong></p>
-<div id="cell-8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:72}}" data-outputid="5b6020f9-8ad0-4049-8fe3-d01d51b34c41">
-<details class="code-fold">
-<summary>Code</summary>
+<div id="cell-9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;python&quot;}}" data-outputid="5b6020f9-8ad0-4049-8fe3-d01d51b34c41">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>chains <span class="op">=</span> {subreddit: RedditMarkovChain(subreddit, order<span class="op">=</span><span class="dv">2</span>, sentence_limit<span class="op">=</span><span class="dv">1000</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>          <span class="cf">for</span> subreddit <span class="kw">in</span> SUBREDDITS}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>100%|██████████| 1000/1000 [00:14&lt;00:00, 68.29it/s]
 100%|██████████| 1000/1000 [00:14&lt;00:00, 67.01it/s]
@@ -660,12 +684,9 @@ window.Quarto = {
 </div>
 </div>
 <p><strong>Deriving most probable sentence for each model</strong></p>
-<div id="cell-10" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:72}}" data-outputid="02364880-b790-4163-ebce-4e8b1aa14f3d">
-<details class="code-fold">
-<summary>Code</summary>
+<div id="cell-11" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;python&quot;}}" data-outputid="02364880-b790-4163-ebce-4e8b1aa14f3d">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> subreddit, chain <span class="kw">in</span> chains.items():</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>subreddit<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>chain<span class="sc">.</span>generate(<span class="st">'expected'</span>)<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>askreddit: I was at a young age.
 explainlikeimfive: The problem with strictly widening a base, while maintaining perpendicular wheels, is there really any point?
@@ -673,9 +694,7 @@ dankmemes: I am not a arest' of the movie.</code></pre>
 </div>
 </div>
 <p><strong>Generating new text</strong></p>
-<div id="cell-12" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:537}}" data-outputid="447727cc-73ec-402b-d67b-a5aeb144be6d">
-<details class="code-fold">
-<summary>Code</summary>
+<div id="cell-13" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;python&quot;}}" data-outputid="447727cc-73ec-402b-d67b-a5aeb144be6d">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>dict_data <span class="op">=</span> defaultdict(<span class="kw">lambda</span>: [])</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> subreddit, chain <span class="kw">in</span> chains.items():</span>
@@ -689,7 +708,6 @@ dankmemes: I am not a arest' of the movie.</code></pre>
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>            dict_data[<span class="ss">f"P(</span><span class="sc">{</span>k<span class="sc">}</span><span class="ss">)"</span>].append(p)</span>
 <span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>display(pd.DataFrame(dict_data))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output cell-output-display">
 <div>
 
@@ -834,9 +852,7 @@ dankmemes: I am not a arest' of the movie.</code></pre>
 </div>
 <p><strong>Classifying real text</strong></p>
 <p>Classifying isn’t exactly ideal this way, as probabilities turn zero when an unprecedented word connection is met. Check out multinomial naive Bayes for a simple text classifier.</p>
-<div id="cell-15" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:520}}" data-outputid="14bf1d49-78c5-4006-a3d5-0d822257cc6b">
-<details class="code-fold">
-<summary>Code</summary>
+<div id="cell-16" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;python&quot;}}" data-outputid="14bf1d49-78c5-4006-a3d5-0d822257cc6b">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dict_data <span class="op">=</span> defaultdict(<span class="kw">lambda</span>: [])</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> subreddit, chain <span class="kw">in</span> chains.items():</span>
@@ -849,7 +865,6 @@ dankmemes: I am not a arest' of the movie.</code></pre>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>            dict_data[<span class="ss">f"P(</span><span class="sc">{</span>k<span class="sc">}</span><span class="ss">)"</span>].append(p)</span>
 <span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>display(pd.DataFrame(dict_data))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output cell-output-display">
 <div>
 
@@ -1419,6 +1434,19 @@ dankmemes: I am not a arest' of the movie.</code></pre>
   });
   </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p><a href="https://github.com/jben-hun"><i class="bi bi-github"></i> <b>JBen</b></a></p>
+</div>
+    <div class="nav-footer-right">
+<p><a href="https://quarto.org/docs/websites">Made with Quarto</a></p>
+</div>
+  </div>
+</footer>
 
 
 
