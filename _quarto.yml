@@ -3,12 +3,14 @@ project:
   output-dir: docs
 
 website:
-  title: "pyground"
+  title: Pyground 🐍
   navbar:
     left:
-      - href: index.qmd
-        text: Home
+      - index.qmd
       - about.qmd
+  page-footer:
+    right: "[Made with Quarto](https://quarto.org/docs/websites)"
+    center: <a href="https://github.com/jben-hun"><i class="bi bi-github"></i> <b>JBen</b></a>
 
 format:
   html:
@@ -18,3 +20,4 @@ format:
       dark: darkly
     css: styles.css
     toc: true
+    page-layout: full

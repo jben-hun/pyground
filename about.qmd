@@ -1,5 +1,11 @@
 ---
-title: "About"
+title: About
 ---
 
-About this site
+Tryable IPython Notebooks hosted on Google Colaboratory and GitHub about interesting stuff, mostly simple algorithms, data analysis and machine learning, done for practice
+
+---
+
+- See them directly in the repo: <https://github.com/jben-hun/pyground/tree/main/notebooks>
+
+- Made by <https://github.com/jben-hun> using <https://colab.research.google.com> and <https://quarto.org/docs/websites>

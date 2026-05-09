@@ -1,15 +1,11 @@
 ---
-title: "Pyground 🐍"
+title: Notebooks
+
+listing:
+  contents: notebooks
+  type: grid
+  sort: date desc
+  fields: [date, title, description, categories]
 ---
 
-- [Breadth/depth-first traversal: Traversing Reddit comment trees](notebooks/breadthDepthCommentTraversal.ipynb)
-- [Gravity sort](notebooks/gravitySort.ipynb)
-- [Hypothesis testing: Simple hypothesis testing in Python](notebooks/hypothesisTesting.ipynb)
-- [Image tiler: Tile an image with mirroring](notebooks/imageTiler.ipynb)
-- [Markov sentences: Generate reddit comments with a markov chain](notebooks/markovSentences.ipynb)
-- [Neural network backpropagation: Mini-batched multilayer perceptron stochastic gradient descent](notebooks/neuralNetBackprop.ipynb)
-- [Steam server statistics: Source & Goldsource mod servers](notebooks/steamServerStat.ipynb)
-- [Viterbi algorithm](notebooks/viterbi.ipynb)
-- [YouTube API: Playlist duration calculation with the YouTube API](notebooks/youtubeAPI.ipynb)
-
-Make with Quarto: <https://quarto.org/docs/websites>.
+APIs, Computer Science, Data science, Machine Learning, Statistics, Visualization
