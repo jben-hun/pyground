@@ -1,0 +1,17 @@
+[
+  {
+    "listing": "/index.html",
+    "items": [
+      "/notebooks/breadthDepthCommentTraversal.html",
+      "/notebooks/gravitySort.html",
+      "/notebooks/hypothesisTesting.html",
+      "/notebooks/imageTiler.html",
+      "/notebooks/markovSentences.html",
+      "/notebooks/neuralNetBackprop.html",
+      "/notebooks/steamServerStat.html",
+      "/notebooks/viterbi.html",
+      "/notebooks/youtubeAPI.html",
+      "/notebooks/viterby.html"
+    ]
+  }
+]

@@ -33,6 +33,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -74,7 +76,65 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-date','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -287,8 +347,14 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#notebook-projects" id="toc-notebook-projects" class="nav-link active" data-scroll-target="#notebook-projects">Notebook projects</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -313,22 +379,162 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<ul>
-<li><a href="./notebooks/breadthDepthCommentTraversal.html">Breadth/depth-first traversal: Traversing Reddit comment trees</a></li>
-<li><a href="./notebooks/gravitySort.html">Gravity sort</a></li>
-<li><a href="./notebooks/hypothesisTesting.html">Hypothesis testing: Simple hypothesis testing in Python</a></li>
-<li><a href="./notebooks/imageTiler.html">Image tiler: Tile an image with mirroring</a></li>
-<li><a href="./notebooks/markovSentences.html">Markov sentences: Generate reddit comments with a markov chain</a></li>
-<li><a href="./notebooks/neuralNetBackprop.html">Neural network backpropagation: Mini-batched multilayer perceptron stochastic gradient descent</a></li>
-<li><a href="./notebooks/steamServerStat.html">Steam server statistics: Source &amp; Goldsource mod servers</a></li>
-<li><a href="./notebooks/viterbi.html">Viterbi algorithm</a></li>
-<li><a href="./notebooks/youtubeAPI.html">YouTube API: Playlist duration calculation with the YouTube API</a></li>
-</ul>
-<p>Make with Quarto: <a href="https://quarto.org/docs/websites" class="uri">https://quarto.org/docs/websites</a>.</p>
+<section id="notebook-projects" class="level1">
+<h1>Notebook projects</h1>
+<p>Made with Quarto: <a href="https://quarto.org/docs/websites" class="uri">https://quarto.org/docs/websites</a>.</p>
 
 
 
-</main> <!-- /main -->
+</section>
+
+<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1778321054214" data-listing-reading-time-sort="1" data-listing-word-count-sort="79">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./notebooks/breadthDepthCommentTraversal.html" class="no-external">Reddit comment traversal</a>
+</h3>
+<div class="delink listing-description"><a href="./notebooks/breadthDepthCommentTraversal.html" class="no-external">
+Implementing breadth- and depth-first traversal and using them to fetch all comments from a reddit comment forest
+</a></div>
+</div>
+<div class="metadata">
+<a href="./notebooks/breadthDepthCommentTraversal.html" class="no-external">
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-listing-file-modified-sort="1778321054214" data-listing-reading-time-sort="1" data-listing-word-count-sort="100">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./notebooks/gravitySort.html" class="no-external"></a>
+</h3>
+<div class="delink listing-description"><a href="./notebooks/gravitySort.html" class="no-external">
+<strong>Gravity Sort</strong>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./notebooks/gravitySort.html" class="no-external">
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="2" data-listing-file-modified-sort="1778321054215" data-listing-reading-time-sort="4" data-listing-word-count-sort="649">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./notebooks/hypothesisTesting.html" class="no-external">Hypothesis Testing</a>
+</h3>
+<div class="delink listing-description"><a href="./notebooks/hypothesisTesting.html" class="no-external">
+Here we’ll explore simple hypothesis testing in python. In hypothesis testing, we have data samples, and we want to test various assumptions about their distributions. Our…
+</a></div>
+</div>
+<div class="metadata">
+<a href="./notebooks/hypothesisTesting.html" class="no-external">
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="3" data-listing-file-modified-sort="1778321054220" data-listing-reading-time-sort="1" data-listing-word-count-sort="21">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./notebooks/imageTiler.html" class="no-external">Definitions</a>
+</h3>
+<div class="delink listing-description"><a href="./notebooks/imageTiler.html" class="no-external">
+<strong>Choose an option to provide a source image</strong>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./notebooks/imageTiler.html" class="no-external">
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="4" data-listing-file-modified-sort="1778321054220" data-listing-reading-time-sort="1" data-listing-word-count-sort="133">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./notebooks/markovSentences.html" class="no-external">Text generation with nth order Markov chain models trained on reddit data</a>
+</h3>
+<div class="delink listing-description"><a href="./notebooks/markovSentences.html" class="no-external">
+The probability <span class="math inline">\(P(\ word_{m}\ \mid\ word_{m-1}\ \land\ word_{m-2}\ \land\ \cdots\ \land\ word_{m-n}\ )\)</span>, where <span class="math inline">\(n\)</span> is the order of the model, is proportional to the…
+</a></div>
+</div>
+<div class="metadata">
+<a href="./notebooks/markovSentences.html" class="no-external">
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="5" data-listing-file-modified-sort="1778321054220" data-listing-reading-time-sort="4" data-listing-word-count-sort="644">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./notebooks/neuralNetBackprop.html" class="no-external">Neural Network Backpropagation</a>
+</h3>
+<div class="delink listing-description"><a href="./notebooks/neuralNetBackprop.html" class="no-external">
+This is a simple implementation of the multilayer perceptron algorithm in python3 and numpy.
+</a></div>
+</div>
+<div class="metadata">
+<a href="./notebooks/neuralNetBackprop.html" class="no-external">
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="6" data-listing-file-modified-sort="1778321054221" data-listing-reading-time-sort="1" data-listing-word-count-sort="69">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./notebooks/steamServerStat.html" class="no-external">Steam server statistics</a>
+</h3>
+<div class="delink listing-description"><a href="./notebooks/steamServerStat.html" class="no-external">
+This notebook uses the Master Server Query Protocol and server queries to get a server list and statistics of multiplayer Source and Goldsource engine mods. * This is for…
+</a></div>
+</div>
+<div class="metadata">
+<a href="./notebooks/steamServerStat.html" class="no-external">
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="7" data-listing-file-modified-sort="1778321054221" data-listing-reading-time-sort="1" data-listing-word-count-sort="25">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./notebooks/viterbi.html" class="no-external"></a>
+</h3>
+<div class="delink listing-description"><a href="./notebooks/viterbi.html" class="no-external">
+<strong>Construct a hidden Markov model</strong>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./notebooks/viterbi.html" class="no-external">
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="8" data-listing-file-modified-sort="1778321054221" data-listing-reading-time-sort="1" data-listing-word-count-sort="125">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./notebooks/youtubeAPI.html" class="no-external"></a>
+</h3>
+<div class="delink listing-description"><a href="./notebooks/youtubeAPI.html" class="no-external">
+<strong>Calculate the total duration of a youtube playlist by getting all video ids it contains, and accumulating their durations</strong>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./notebooks/youtubeAPI.html" class="no-external">
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="9" data-listing-date-sort="1778277600000" data-listing-file-modified-sort="1778321390863" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./notebooks/viterby.html" class="no-external">Cool experiment</a>
+</h3>
+<div class="delink listing-description"><a href="./notebooks/viterby.html" class="no-external">
+<p>Testing feature matching.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./notebooks/viterby.html" class="no-external">
+<div class="listing-date">
+May 9, 2026
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
@@ -415,7 +621,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/jben-hun\.github\.io\/pyground\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
